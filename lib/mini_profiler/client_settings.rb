@@ -72,7 +72,7 @@ module Rack
           settings["a"] = @allowed_tokens.join("|") if @allowed_tokens && MiniProfiler.request_authorized?
 
           settings_string = settings.map{|k,v| "#{k}=#{v}"}.join(",")
-          Rack::Utils.set_cookie_header!(headers, COOKIE_NAME, :value => settings_string, :path => '/')
+          Rack::Utils.set_cookie_header!(headers, COOKIE_NAME, :value => settings_string, :path => '/', domain: '.staging.grabr.io')
         end
       end
 
